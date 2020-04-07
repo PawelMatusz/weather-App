@@ -1,0 +1,11 @@
+.result {
+  color: green;
+}
+.result > h3,
+h4 {
+  font-weight: 500;
+  font-size: 24px;
+}
+.result > h3 em {
+  font-weight: bold;
+}
