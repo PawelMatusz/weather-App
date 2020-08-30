@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import Form from './Form.js';
 import Result from './Result';
+import Header from './Header';
 class App extends Component {
   state = {
     value: '',
@@ -24,7 +25,7 @@ class App extends Component {
   componentDidUpdate(prevProps, prevState) {
     if (this.state.value.length === 0) return;
     if (prevState.value !== this.state.value) {
-      const API = `http://api.openweathermap.org/data/2.5/weather?q=${this.state.value}&APPID=${process.env.REACT_APP_WEATHER_API_KEY}&units=metric
+      const API = `https://cors-anywhere.herokuapp.com/https://api.openweathermap.org/data/2.5/weather?q=${this.state.value}&APPID=${process.env.REACT_APP_WEATHER_API_KEY}&units=metric
    `;
       fetch(API)
         .then(response => {
@@ -60,6 +61,7 @@ class App extends Component {
   render() {
     return (
       <div className='app'>
+        <Header />
         <Form value={this.state.value} change={this.handleInputChange} />
         <Result weather={this.state} />
       </div>
